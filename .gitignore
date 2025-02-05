@@ -244,3 +244,5 @@ pyrightconfig.json
 *.npy
 *.deb
 *.swp
+
+**/datasets/**

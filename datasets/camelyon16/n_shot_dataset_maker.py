@@ -47,6 +47,9 @@ def select_and_copy_files_nested_fold(src_top_dir, dst_top_dir, num_files):
     for src_sub_dir_name in os.listdir(src_top_dir):
         src_sub_dir_path = os.path.join(src_top_dir, src_sub_dir_name)
 
+        if os.path.isdir(src_sub_dir_path) is False:
+            continue
+
         # Create a corresponding subdirectory in the destination top directory with '_5shot' suffix
         dst_sub_dir_name = f"{src_sub_dir_name}"
         dst_sub_dir_path = os.path.join(dst_top_dir, dst_sub_dir_name)
