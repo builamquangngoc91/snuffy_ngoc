@@ -738,6 +738,9 @@ if __name__ == '__main__':
     print(f'*** Run Config *** ')
     utils.pretty_print({**vars(args)})
 
+    print(f'*** Wandb Run Name *** {wandb.run.name}')
+    print(f'args.output_dir: {args.output_dir}')
+
     args.output_dir = os.path.join(args.output_dir, wandb.run.name)
     Path(args.output_dir).mkdir(parents=True, exist_ok=True)
     train_dino(args)
