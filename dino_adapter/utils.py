@@ -199,6 +199,10 @@ def cosine_scheduler(base_value, final_value, epochs, niter_per_ep, warmup_epoch
     schedule = final_value + 0.5 * (base_value - final_value) * (1 + np.cos(np.pi * iters / len(iters)))
 
     schedule = np.concatenate((warmup_schedule, schedule))
+    print(f'len(schedule): {len(schedule)}')
+    print(f'epochs: {epochs}')
+    print(f'niter_per_ep: {niter_per_ep}')
+    print(f'epochs * niter_per_ep: {epochs * niter_per_ep}')
     assert len(schedule) == epochs * niter_per_ep
     return schedule
 
