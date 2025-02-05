@@ -186,6 +186,9 @@ def train_dino(args):
         pin_memory=True,
         drop_last=True,
     )
+
+    print(f'len(dataset_train): {len(dataset_train)}')
+    print(f'len(dataset_valid): {len(dataset_valid)}')
     data_loader_valid = torch.utils.data.DataLoader(
         dataset_train,
         sampler=sampler_valid,
