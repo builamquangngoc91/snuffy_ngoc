@@ -25,7 +25,7 @@ from torch.nn.modules.loss import _Loss
 import metrics
 import snuffy
 import snuffy_multiclass
-from froc import mp_computeFROC_list_no_cache
+# from froc import mp_computeFROC_list_no_cache
 from utils import (
     WEIGHT_INITS, OPTIMIZERS,
     pretty_print, print_table, replace_key_names, delete_files_for_epoch,
@@ -395,20 +395,20 @@ class Trainer:
                                                   zip(detections, all_image_names)])
             for key, data in res_:
                 detections_dict[key] = data
-            challenge_froc_score = mp_computeFROC_list_no_cache(
-                CAMELYON16_REFERENCE,
-                CAMELYON16_MASK_PATH,
-                detections_dict,
-                os.path.join(self.froc_path, 'results'),
-                False,
-                True,
-                5,  # mask level
-                all_image_names,
-                self.froc_path,
-                plot_prefix,
-                self.args.num_processes
-            )
-            res['epoch_valid_challenge_froc_score'] = challenge_froc_score
+            # challenge_froc_score = mp_computeFROC_list_no_cache(
+            #     CAMELYON16_REFERENCE,
+            #     CAMELYON16_MASK_PATH,
+            #     detections_dict,
+            #     os.path.join(self.froc_path, 'results'),
+            #     False,
+            #     True,
+            #     5,  # mask level
+            #     all_image_names,
+            #     self.froc_path,
+            #     plot_prefix,
+            #     self.args.num_processes
+            # )
+            # res['epoch_valid_challenge_froc_score'] = challenge_froc_score
 
         return res
 
