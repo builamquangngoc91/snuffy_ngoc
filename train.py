@@ -339,6 +339,9 @@ class Trainer:
                 if self.args.l2normed_embeddings == 1:
                     bag_feats = bag_feats / np.linalg.norm(bag_feats, axis=1, keepdims=True)
                 # ------------------------
+
+                print(f'bag_label: {bag_label}')
+                print(f'bag_feats: {bag_feats}')
                 bag_label = Variable(Tensor(np.array([bag_label])).to(device))
                 bag_feats = Variable(Tensor(np.array([bag_feats])).to(device))
 
