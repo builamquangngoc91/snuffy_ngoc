@@ -79,6 +79,8 @@ class BagDataset:
         img = os.path.join(temp_path)
         img = Image.open(img)
 
+        print("class_name/bag_name/patch_name", temp_path.split(os.path.sep)[-3:])
+
         patch_address = os.path.join(
             *temp_path.split(os.path.sep)[-3:]  # class_name/bag_name/patch_name.jpeg
         )
