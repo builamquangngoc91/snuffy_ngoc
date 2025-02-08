@@ -235,6 +235,7 @@ def _load_data_mp(bags_df, args):
     if not feats_labels_available:
         all_feats_labels = None
         all_positions = None
+    print("all_feats_labels", all_feats_labels)
     return all_labels, all_feats, all_feats_labels, all_positions, all_slide_names
 
 
