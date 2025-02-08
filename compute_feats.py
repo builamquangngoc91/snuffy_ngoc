@@ -626,6 +626,8 @@ def main():
 
     patch_labels_dict = get_patch_labels_dict(args)
 
+    print(f'patch_labels_dict: {patch_labels_dict}')
+
     start_time = time.time()
     embedder, _ = get_embedder(args, backbone, num_feats)
     compute_feats(args, bags_list, embedder, feats_path, patch_labels_dict)
