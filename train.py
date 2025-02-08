@@ -534,7 +534,9 @@ class Runner:
                 self.train_data, self.valid_data, self.test_data = self._get_data()
         elif self.args.dataset in MIL_DATASETS:
             self.train_data, self.valid_data, self.test_data = load_mil_data(args)
-
+        print('self.train_data', self.train_data)
+        print('self.valid_data', self.valid_data)
+        print('self.test_data', self.test_data)
         print(
             f'Num Bags'
             f' (Train: {len(self.train_data[0])})'
