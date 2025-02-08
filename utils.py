@@ -222,6 +222,7 @@ def _load_data_mp_worker(args):
 
 
 def _load_data_mp(bags_df, args):
+    print("bags_df", bags_df)
     with mp.Pool(processes=args.num_processes) as pool:
         all_labels, all_feats, all_feats_labels, all_positions, all_slide_names = zip(
             *pool.map(_load_data_mp_worker, [(i, bags_df.iloc[i], args) for i in range(len(bags_df))])
