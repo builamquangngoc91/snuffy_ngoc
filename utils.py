@@ -194,6 +194,8 @@ def _load_data(bags_df, args):
 
     for i in tqdm(range(len(bags_df))):
         label, feats, feats_labels, positions = get_bag_feats(bags_df.iloc[i], args)
+        print('bags_df.iloc[i]', bags_df.iloc[i])
+        print('label', label)
         all_labels.append(label)
         all_feats.append(feats)
 
