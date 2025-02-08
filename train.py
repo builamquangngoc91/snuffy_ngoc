@@ -604,6 +604,7 @@ class Runner:
     def _load_split_data(self, split_path, split_name):
         print(f'Loading {split_name} data... (mp={self.args.use_mp})...')
         start_time = time.time()
+        print("_load_split_data")
         data = load_data(split_path, self.args)
         print(f'DONE (Took {(time.time() - start_time):.1f}s)')
         return data

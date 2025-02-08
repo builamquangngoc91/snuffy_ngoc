@@ -191,6 +191,7 @@ def _load_data(bags_df, args):
     all_slide_names = []
 
     feats_labels_available = True
+    print("bags_df", bags_df)
 
     for i in tqdm(range(len(bags_df))):
         label, feats, feats_labels, positions = get_bag_feats(bags_df.iloc[i], args)
@@ -240,6 +241,7 @@ def load_data(dataframe, args):
     if args.use_mp:
         return _load_data_mp(dataframe, args)
     else:
+        print("dataframe", dataframe)
         return _load_data(dataframe, args)
 
 
