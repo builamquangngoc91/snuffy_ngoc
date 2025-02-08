@@ -537,8 +537,8 @@ def get_patch_labels_dict(args) -> Optional[Dict[str, int]]:
         labels_df = pd.read_csv(patch_labels_path)
         print(f'Using patch_labels csv file at {patch_labels_path}')
         duplicates = labels_df['slide_name'].duplicated()
-        print(f'duplicates: {duplicates}')
-        print(f'any(duplicates): {any(duplicates)}')
+        duplicate_rows = labels_df[duplicates]
+        print(f'duplicate_rows: {duplicate_rows}')
         assert not any(duplicates), "There are duplicate patch_names in the {patch_labels_csv} file."
         return labels_df.set_index('slide_name')['label'].to_dict()
 
