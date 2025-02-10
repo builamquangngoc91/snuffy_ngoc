@@ -610,6 +610,7 @@ class Runner:
         return data
 
     def _log_initial_metrics(self):
+        print("self.valid_data", self.valid_data)
         initial_metrics = self.trainer.valid(self.valid_data)  # solved
         print(f'\nInitial Metrics')
         print_table(initial_metrics)
