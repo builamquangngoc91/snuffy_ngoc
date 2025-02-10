@@ -611,7 +611,8 @@ class Runner:
 
     def _log_initial_metrics(self):
         print("self.valid_data", self.valid_data)
-        print("self.valid_data", self.valid_data.shape)
+        for item in self.valid_data:
+            print(item)
         initial_metrics = self.trainer.valid(self.valid_data)  # solved
         print(f'\nInitial Metrics')
         print_table(initial_metrics)
