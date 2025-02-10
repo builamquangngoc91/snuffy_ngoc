@@ -85,7 +85,6 @@ class BagDataset:
             *temp_path.split(os.path.sep)[-3:]  # class_name/bag_name/patch_name.jpeg
         )
         label = self.patch_labels.get(patch_address, -1)  # TCGA doesn't have patch labels, set -1 to ignore
-
         patch_name = Path(temp_path).stem
         # Camelyon16 Patch Name Convention: {row}_{col}-17.jpeg > 116_228-17.jpeg
         # TCGA       Patch Name Convention: {row}_{col}.jpeg    > 116_228-17.jpeg

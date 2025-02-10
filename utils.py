@@ -273,6 +273,8 @@ def multi_label_roc(labels, predictions, num_classes, for_feats=False):
 
         fpr, tpr, threshold = roc_curve(label, prediction, pos_label=1)
         fpr_optimal, tpr_optimal, threshold_optimal = optimal_thresh(fpr, tpr, threshold)
+        print(f'Label {c}: {label}')
+        print(f'Prediction {c}: {prediction}')
         c_auc = roc_auc_score(label, prediction)
 
         aucs.append(c_auc)
