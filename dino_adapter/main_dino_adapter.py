@@ -234,17 +234,18 @@ def train_dino(args):
         print(f"Unknow architecture: {args.arch}")
 
     # multi-crop wrapper handles forward with inputs of different resolutions
-    student = utils.MultiCropWrapper(student, DINOHead(
-        embed_dim,
-        args.out_dim,
-        use_bn=args.use_bn_in_head,
-        norm_last_layer=args.norm_last_layer,
-    ))
-    teacher = utils.MultiCropWrapper(
-        teacher,
-        DINOHead(embed_dim, args.out_dim, args.use_bn_in_head),
-    )
-
+    # student = utils.MultiCropWrapper(student, DINOHead(
+    #     embed_dim,
+    #     args.out_dim,
+    #     use_bn=args.use_bn_in_head,
+    #     norm_last_layer=args.norm_last_layer,
+    # ))
+    student = student.cuda()
+    # teacher = utils.MultiCropWrapper(
+    #     teacher,
+    #     DINOHead(embed_dim, args.out_dim, args.use_bn_in_head),
+    # )
+    teacher = teacher.cuda()
     if args.finetune == 1:
         full_checkpoint = torch.load(args.full_checkpoint, map_location='cpu')
         print("Load pre-trained checkpoint from: %s" % args.full_checkpoint)

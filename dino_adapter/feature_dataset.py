@@ -18,4 +18,4 @@ class FeatureDataset(Dataset):
         x = torch.tensor(x, dtype=torch.float)
         if self.transform is not None:
             x = self.transform(x)
-        return x, 0
+        return [x, x], 0
