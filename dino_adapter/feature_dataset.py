@@ -11,6 +11,7 @@ class FeatureDataset(Dataset):
         self.feature_files = [
             os.path.join(feature_dir, f) for f in os.listdir(feature_dir) if f.endswith('.h5')
         ]
+        print(f'feature_files: {self.feature_files}')
         if not self.feature_files:
             raise ValueError("No .h5 files found in the provided directory")
         # For simplicity, let's load features from the first file
