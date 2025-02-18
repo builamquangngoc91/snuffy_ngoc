@@ -46,8 +46,10 @@ for folder in ["0_normal", "1_tumor"]:
         (validation_dir, validation_images),
         (test_dir, test_images)
     ]:
+        print(split_dir, split_images)
         for image in split_images:
-            src = os.path.join(base_dir, folder, image)
+            src = os.path.join(base_dir, image)
+            print(f'src: {src}')
             if os.path.exists(src):
                 dst = os.path.join(split_dir, folder, image)
                 print(f'moving {src} to {dst}')
