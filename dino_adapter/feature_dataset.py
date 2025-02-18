@@ -1,14 +1,21 @@
+import os
 import torch
 from torch.utils.data import Dataset
 import h5py
 import numpy as np
 
 class FeatureDataset(Dataset):
-    def __init__(self, feature_file, transform=None):
-        self.feature_file = feature_file
+    def __init__(self, feature_dir, transform=None):
         self.transform = transform
-        with h5py.File(feature_file, 'r') as f:
-            self.features = f['features'][:]  
+        # List all .h5 files in the provided directory
+        self.feature_files = [
+            os.path.join(feature_dir, f) for f in os.listdir(feature_dir) if f.endswith('.h5')
+        ]
+        if not self.feature_files:
+            raise ValueError("No .h5 files found in the provided directory")
+        # For simplicity, let's load features from the first file
+        with h5py.File(self.feature_files[0], 'r') as f:
+            self.features = f['features'][:]
 
     def __len__(self):
         return len(self.features)
