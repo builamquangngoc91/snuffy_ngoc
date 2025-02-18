@@ -32,6 +32,7 @@ import torch.backends.cudnn as cudnn
 import torch.nn.functional as F
 from torchvision import datasets, transforms
 from torchvision import models as torchvision_models
+from feature_dataset import FeatureDataset
 
 import utils
 import vision_transformer_with_adapter as vits
@@ -174,8 +175,10 @@ def train_dino(args):
         args.local_crops_scale,
         args.local_crops_number,
     )
-    dataset_train = datasets.ImageFolder(args.data_path_train, transform=transform)
-    dataset_valid = datasets.ImageFolder(args.data_path_valid, transform=transform)
+    #dataset_train = datasets.ImageFolder(args.data_path_train, transform=transform)
+    #dataset_valid = datasets.ImageFolder(args.data_path_valid, transform=transform)
+    dataset_train = FeatureDataset(args.data_path_train, transform=None)  # hoặc một transform thích hợp cho feature
+    dataset_valid = FeatureDataset(args.data_path_valid, transform=None)
     sampler_train = torch.utils.data.DistributedSampler(dataset_train, shuffle=True)
     sampler_valid = torch.utils.data.DistributedSampler(dataset_valid, shuffle=False)
     data_loader_train = torch.utils.data.DataLoader(
